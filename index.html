@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Bento Landing Page - Food Science</title>
+    <title>Student Bento Landing Page - Nur Syazana</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /*
@@ -17,7 +17,7 @@
             --color-card-bg: #ffffff; /* White Card Background */
             --color-text: #1f2937; /* Dark Grey Text */
             --color-text-secondary: #6b7280; /* Lighter Grey Secondary Text */
-            --color-accent: #1e40af; /* Deep Ocean Blue Accent (Updated for UMT theme) */
+            --color-accent: #1e40af; /* Deep Ocean Blue Accent (UMT theme) */
             --color-border: #e5e7eb; /* Light Grey Border */
             --font-stack: 'Inter', sans-serif;
         }
@@ -46,7 +46,7 @@
             gap: 16px; /* Gap between cards */
             max-width: 1200px;
             margin: 0 auto;
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
             grid-auto-rows: minmax(150px, auto); 
         }
 
@@ -56,20 +56,22 @@
             padding: 24px;
             border: 1px solid var(--color-border);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            /* Retaining Hover Effect */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
             display: flex;
             flex-direction: column;
             overflow: hidden; 
         }
-
+        
+        /* Subtle scale hover effect (zoom) */
         .bento-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px) scale(1.01); 
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
         }
 
         /*
         ----------------------------------
-        3. Card Sizing (Desktop Layout)
+        3. Card Sizing & Placement (Desktop Layout)
         ----------------------------------
         */
 
@@ -95,16 +97,24 @@
         /* Card 4 (Case Study): Medium box (2x1) */
         .card-case-study {
             grid-column: span 2;
+            grid-row: span 1;
         }
 
         /* Card 5 (Hobby): Small box (1x1) */
         .card-hobby {
             grid-column: span 1;
+            grid-row: span 1;
+        }
+        
+        /* Card Reflection (1x1) */
+        .card-reflection {
+            grid-column: span 1;
+            grid-row: span 1;
         }
 
-        /* Card 6 (Playlist): Wide box at the bottom (3x1) */
+        /* Card 6 (Playlist): Wide box at the bottom (4x1) */
         .card-playlist {
-            grid-column: span 3;
+            grid-column: span 4;
             background-color: var(--color-accent);
             color: var(--color-card-bg);
         }
@@ -157,7 +167,6 @@
             color: var(--color-accent);
         }
 
-        /* Styling for list content */
         .content-list {
             list-style: none;
             padding-left: 0;
@@ -176,14 +185,20 @@
             font-weight: 700;
         }
 
-        /* Special styling for the wide Playlist card */
+        /* Specific text styles */
         .card-playlist .card-header {
-            color: var(--color-card-bg); /* White header on accent bg */
+            color: var(--color-card-bg); 
         }
 
         .card-playlist p {
             font-size: 1.1em;
             opacity: 0.8;
+        }
+        
+        .reflection-content {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: var(--color-text-secondary);
         }
 
         /* Placeholder styles */
@@ -205,9 +220,9 @@
         */
         @media (max-width: 768px) {
             .bento-grid {
-                /* On mobile, stack all cards vertically in a single column */
+                /* Stacked vertically in a single column */
                 grid-template-columns: 1fr;
-                grid-auto-rows: minmax(150px, auto); /* Flexible height */
+                grid-auto-rows: minmax(150px, auto); 
             }
 
             /* Reset all grid spans for mobile to stack them normally */
@@ -229,28 +244,28 @@
         <div class="bento-card card-profile">
             <div>
                 <span class="card-header">STUDENT PROFILE</span>
-                <h1 class="profile-title">[Nur Syazana]</h1>
-                <p class="profile-subtitle">Bachelor of Agroculture Science, Year 1 </p>
+                <h1 class="profile-title">NUR SYAZANA</h1>
+                <p class="profile-subtitle">Bachelor of Food Science, Year 1</p>
                 <p class="profile-tagline">'Innovating food safety.'</p>
             </div>
             
             <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">UMT Portal</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
             </div>
         </div>
 
         <div class="bento-card card-location">
             <span class="card-header">LOCATION & TIME</span>
             <p class="large-text">UMT, Kuala Nerus</p>
-            <p class="placeholder-text">Current Time: 11:11 AM</p>
+            <p class="placeholder-text">Current Time: 12:00 PM</p>
         </div>
 
         <div class="bento-card card-subjects">
             <span class="card-header">CORE ACADEMIC SKILLS</span>
             <ul class="content-list">
-                <li>Food Chemistry</li>
+                <li>Agroculture Chemistry</li>
                 <li>Microbiology</li>
                 <li>Advanced Excel</li>
                 <li>Lab Analysis</li>
@@ -267,6 +282,11 @@
             <span class="card-header">CAMPUS LIFE & HOBBY</span>
             <p class="large-text">Coastal Walks</p>
             <p class="placeholder-text">Evening walks at Pantai UMT.</p>
+        </div>
+
+        <div class="bento-card card-reflection">
+            <span class="card-header">WHY FOOD TECH MATTERS IN MALAYSIA</span>
+            <p class="reflection-content">Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.</p>
         </div>
 
         <div class="bento-card card-playlist">

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Bento Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        ----------------------------------
+        1. General Styling & Typography
+        ----------------------------------
+        */
+        :root {
+            /* Rule 4: Clean, scientific color palette */
+            --color-bg: #f4f7f9; /* Soft Grey Background */
+            --color-card-bg: #ffffff; /* White Card Background */
+            --color-text: #1f2937; /* Dark Grey Text */
+            --color-text-secondary: #6b7280; /* Lighter Grey Secondary Text */
+            --color-accent: #059669; /* Subtle Green Accent */
+            --color-border: #e5e7eb; /* Light Grey Border */
+            --font-stack: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /*
+        ----------------------------------
+        2. Bento Grid Structure (Desktop)
+        ----------------------------------
+        */
+        .bento-grid {
+            display: grid;
+            gap: 16px; /* Gap between cards */
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Defines 3 equally sized columns */
+            grid-template-columns: repeat(3, 1fr); 
+            /* Defines 4 rows implicitly for the 2x2 profile card and the bottom row */
+            grid-auto-rows: minmax(150px, auto); 
+        }
+
+        .bento-card {
+            background-color: var(--color-card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*
+        ----------------------------------
+        3. Card Sizing (Desktop Layout)
+        ----------------------------------
+        */
+
+        /* Card 1 (Profile): Large box (2x2) */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+            justify-content: space-between; 
+        }
+
+        /* Card 2 (Location): Small box (1x1) - Fills the top right corner */
+        .card-location {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* Card 3 (Tech Stack): Medium box (1x1) - Fills the middle right corner */
+        .card-subjects {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* Card 4 (Case Study): Medium box (2x1) - Below the Profile Card */
+        /* Takes up 2 columns below the Profile card on the left */
+        .card-case-study {
+            grid-column: span 2;
+        }
+
+        /* Card 5 (Hobby): Small box (1x1) - Below the Tech Stack Card */
+        .card-hobby {
+            grid-column: span 1;
+        }
+
+        /* Card 6 (Playlist): Wide box at the bottom (3x1) */
+        .card-playlist {
+            grid-column: span 3;
+            background-color: var(--color-accent);
+            color: var(--color-card-bg);
+        }
+
+        /*
+        ----------------------------------
+        4. Content Styling
+        ----------------------------------
+        */
+        .card-header {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-subtitle {
+            font-size: 1.2em;
+            color: var(--color-text-secondary);
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .large-text {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .placeholder-text {
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+
+        /* Override for playlist card */
+        .card-playlist .card-header {
+            color: var(--color-card-bg); 
+        }
+        .card-playlist .placeholder-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .card-playlist p {
+            font-size: 1.1em;
+        }
+        
+        /*
+        ----------------------------------
+        5. Mobile Responsiveness (Rule 2)
+        ----------------------------------
+        */
+        @media (max-width: 768px) {
+            .bento-grid {
+                /* Stacked vertically in a single column */
+                grid-template-columns: 1fr;
+                /* Allow cards to take up necessary height */
+                grid-auto-rows: minmax(150px, auto); 
+            }
+
+            /* Reset all grid spans for mobile to stack them normally */
+            .bento-card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bento-grid">
+
+        <div class="bento-card card-profile">
+            <div>
+                <span class="card-header">STUDENT PROFILE</span>
+                <h1 class="profile-title">[Nur Syazana]</h1>
+                <p class="profile-subtitle">Program: Agroculture Science, Year 1</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">UMT Portal</a>
+            </div>
+        </div>
+
+        <div class="bento-card card-location">
+            <span class="card-header">LOCATION</span>
+            <p class="large-text">UMT Campus</p>
+            <p class="placeholder-text">Local Time Placeholder</p>
+        </div>
+
+        <div class="bento-card card-subjects">
+            <span class="card-header">CORE SUBJECTS</span>
+            <p class="large-text"> Plant Chemistry </p>
+            <p class="placeholder-text">Microbiology, Instrumentation</p>
+        </div>
+
+        <div class="bento-card card-case-study">
+            <span class="card-header">RECENT RESEARCH</span>
+            <p class="large-text">Lab Experiment Title Placeholder</p>
+            <p class="placeholder-text">Brief description of the latest project.</p>
+        </div>
+
+        <div class="bento-card card-hobby">
+            <span class="card-header">HOBBY</span>
+            <p class="large-text">Badminton </p>
+            <p class="placeholder-text">Sports, clubs, or personal interest.</p>
+        </div>
+
+        <div class="bento-card card-playlist">
+            <span class="card-header">STUDY PLAYLIST</span>
+            <p>🎶 Placeholder for a music player.</p>
+            <p class="placeholder-text">Currently playing lo-fi beats.</p>
+        </div>
+        
+    </div>
+
+</body>
+</html>

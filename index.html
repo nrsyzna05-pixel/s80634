@@ -74,23 +74,31 @@
         ----------------------------------
         */
 
-        /* Card 1 (Profile): Large box (2x2) */
         .card-profile {
             grid-column: span 2;
             grid-row: span 2;
             justify-content: space-between; 
-            
-            /* --- PENGATURAN GAMBAR LATAR BELAKANG --- */
             background-image: url('download.jpg'); 
             background-size: cover;          
             background-position: center;     
             background-repeat: no-repeat;
-            color: var(--color-card-bg); /* Ubah warna teks default menjadi putih */
+            color: var(--color-card-bg);
         }
 
         .card-location { grid-column: span 1; grid-row: span 1; }
         .card-subjects { grid-column: span 1; grid-row: span 1; }
-        .card-case-study { grid-column: span 2; grid-row: span 1; }
+
+        /* Case Study Card: Updated to support two columns */
+        .card-case-study { 
+            grid-column: span 2; 
+            grid-row: span 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
         .card-hobby { grid-column: span 1; grid-row: span 1; }
         .card-reflection { grid-column: span 1; grid-row: span 1; }
         .card-playlist { 
@@ -111,11 +119,10 @@
             margin-bottom: 10px;
         }
 
-        /* Penyesuaian Warna Teks untuk Profile Card (di atas gambar) */
         .card-profile .card-header,
         .card-profile .profile-tagline {
-            color: #ffcc00; /* Warna kontras terang */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Bayangan teks untuk keterbacaan */
+            color: #ffcc00; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
         }
         .card-profile .profile-title {
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
@@ -127,22 +134,42 @@
         .card-profile .social-links a {
             color: var(--color-card-bg);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+            text-decoration: none;
+            margin-right: 15px;
         }
         .card-profile .social-links a:hover {
             color: #ffcc00;
         }
         
-        /* Styling daftar */
         .content-list { list-style: none; padding-left: 0; }
         .content-list li { margin-bottom: 8px; padding-left: 15px; position: relative; color: var(--color-text); }
         .content-list li::before { content: '•'; color: var(--color-accent); position: absolute; left: 0; font-weight: 700; }
         
-        /* Styling teks card lainnya */
         .card-playlist .card-header { color: var(--color-card-bg); }
         .reflection-content { font-size: 0.95em; line-height: 1.5; color: var(--color-text); }
         .large-text { font-size: 1.8em; font-weight: 600; margin-bottom: 5px; }
         .placeholder-text { color: var(--color-text-secondary); font-style: italic; }
 
+        /* Button Styling for the App Link */
+        .btn-app {
+            background-color: var(--color-accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+        }
+
+        .btn-app:hover {
+            background-color: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.3);
+        }
 
         /*
         ----------------------------------
@@ -152,11 +179,14 @@
         @media (max-width: 768px) {
             .bento-grid {
                 grid-template-columns: 1fr;
-                grid-auto-rows: minmax(150px, auto); 
             }
             .bento-card {
                 grid-column: span 1 !important;
                 grid-row: span 1 !important;
+            }
+            .card-case-study {
+                flex-direction: column;
+                text-align: center;
             }
             body { padding: 10px; }
         }
@@ -198,9 +228,14 @@
         </div>
 
         <div class="bento-card card-case-study">
-            <span class="card-header">RECENT RESEARCH FOCUS</span>
-            <p class="large-text">Starch Gelatinization in Local Kuih</p>
-            <p class="placeholder-text">Analyzing texture profiles of Kuih Lapis.</p>
+            <div class="case-study-content">
+                <span class="card-header">RECENT RESEARCH FOCUS</span>
+                <p class="large-text">Starch Gelatinization</p>
+                <p class="placeholder-text">Analyzing local kuih textures.</p>
+            </div>
+            <div class="case-study-action">
+                <a href="https://nrsyzna05-pixel.github.io/-focus-timer-app/app.html" class="btn-app" target="_blank">Try My Focus Timer App →</a>
+            </div>
         </div>
 
         <div class="bento-card card-hobby">
@@ -216,8 +251,10 @@
 
         <div class="bento-card card-playlist">
             <span class="card-header">STUDY VIBES PLAYLIST</span>
-            <p>🎶 Placeholder for an embedded music player widget.</p>
-            <p class="placeholder-<iframe data-testid="embed-iframe" style="border-radius:12px" "https://open.spotify.com/embed/playlist/37i9dQZEVXbKcS4rq3mEhp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>">Listening to: Focus Ambient Soundscapes</p>
+            <p>🎶 Listening to: Focus Ambient Soundscapes</p>
+            <div style="margin-top: 15px; opacity: 0.8; font-size: 0.85em; font-style: italic;">
+                [Embedded Player Placeholder]
+            </div>
         </div>
         
     </div>
